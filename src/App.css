@@ -1,3 +1,16 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-image: url("background.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  top: 0;
+  position: absolute;
+}
 .App {
   text-align: center;
 }
@@ -23,6 +36,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

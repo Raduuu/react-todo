@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"; // eslint-disable-next-line
+import logo from "./logo.svg";
+import TodosWrapper from "./TodosWrapper";
+import "./App.css";
+import "./styles/Todo.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    // set of the app with an array of todos and the value of the new todo
+    this.state = {
+      newTodo: "",
+      todos: []
+    };
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="todoApp">
+          <div className="todo-title"> todos </div>
+          <TodosWrapper />
+        </div>
       </div>
     );
   }
