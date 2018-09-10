@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
 import "../styles/Todo.css";
+import { addTodo } from "../actions";
+import { connect } from "react-redux";
 
-export default class TodosWrapper extends Component {
+class TodosList extends Component {
   constructor(props) {
     super(props);
 
@@ -18,6 +20,7 @@ export default class TodosWrapper extends Component {
       this.setState(state => ({
         todos: state.todos.concat([this.state.newTodo])
       }));
+      this.props.dispatch(addTodo(ev.target.value));
     } else {
       return;
     }
@@ -41,7 +44,7 @@ export default class TodosWrapper extends Component {
           onChange={this.handleChange}
           autoFocus={true}
         />
-        <div className="todos-wrapper">
+        <div className="todos-list">
           <ul>
             {this.state.todos.map((todo, index) => {
               return <Todo todo={todo} key={index} id={index} />;
@@ -52,3 +55,5 @@ export default class TodosWrapper extends Component {
     );
   }
 }
+
+export default connect()(TodosList);
