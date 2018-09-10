@@ -9,7 +9,6 @@ export default class Todo extends Component {
   }
 
   toggleTodo = todo => {
-    console.log(todo);
     this.setState(prevState => ({
       completed: !prevState.completed
     }));

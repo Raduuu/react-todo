@@ -1,6 +1,6 @@
 import React, { Component } from "react"; // eslint-disable-next-line
 import logo from "./logo.svg";
-import TodosWrapper from "./TodosWrapper";
+import TodosWrapper from "./components/TodosWrapper";
 import "./App.css";
 import "./styles/Todo.css";
 

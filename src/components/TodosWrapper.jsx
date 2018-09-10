@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Todo from "./Todo.jsx";
-import "./styles/Todo.css";
+import Todo from "./Todo";
+import "../styles/Todo.css";
 
 export default class TodosWrapper extends Component {
   constructor(props) {
