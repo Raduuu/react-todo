@@ -15,13 +15,15 @@ export default class Todo extends Component {
   };
 
   render() {
+    const { todo } = this.props;
+    console.log(todo);
     return (
       <li
-        onClick={() => this.toggleTodo(this.props.todo)}
+        onClick={() => this.toggleTodo(todo)}
         className={this.state.completed ? "completed" : ""}
-        key={this.props.id}
+        key={todo.id}
       >
-        {this.props.todo}
+        {todo.text}
       </li>
     );
   }

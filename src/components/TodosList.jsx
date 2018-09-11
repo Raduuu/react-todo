@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
 import "../styles/Todo.css";
+import PropTypes from "prop-types";
 import { addTodo } from "../actions";
 import { connect } from "react-redux";
 
@@ -9,17 +10,16 @@ class TodosList extends Component {
     super(props);
 
     this.state = {
-      newTodo: "",
-      todos: []
+      newTodo: ""
     };
   }
 
   handleEnter = ev => {
     if (ev.key === "Enter" && ev.target.value !== "") {
       this.setState({ newTodo: "" });
-      this.setState(state => ({
-        todos: state.todos.concat([this.state.newTodo])
-      }));
+      // this.setState(state => ({
+      //   todos: state.todos.concat([this.state.newTodo])
+      // }));
       this.props.dispatch(addTodo(ev.target.value));
     } else {
       return;
@@ -33,6 +33,9 @@ class TodosList extends Component {
   };
 
   render() {
+    const { todos } = this.props;
+    console.log(todos);
+
     return (
       <div className="todos-wrapper">
         <input
@@ -46,8 +49,8 @@ class TodosList extends Component {
         />
         <div className="todos-list">
           <ul>
-            {this.state.todos.map((todo, index) => {
-              return <Todo todo={todo} key={index} id={index} />;
+            {todos.map((todo, index) => {
+              return <Todo todo={todo} key={todo.id} />;
             })}
           </ul>
         </div>
@@ -56,4 +59,18 @@ class TodosList extends Component {
   }
 }
 
-export default connect()(TodosList);
+TodosList.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      completed: PropTypes.bool.isRequired,
+      text: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
+};
+
+const mapStateToProps = state => ({
+  todos: state.todos
+});
+
+export default connect(mapStateToProps)(TodosList);
