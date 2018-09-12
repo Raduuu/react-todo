@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 export default class Todo extends Component {
   constructor(props) {
     super(props);
@@ -8,18 +7,12 @@ export default class Todo extends Component {
     };
   }
 
-  toggleTodo = todo => {
-    this.setState(prevState => ({
-      completed: !prevState.completed
-    }));
-  };
-
   render() {
-    const { todo } = this.props;
-    console.log(todo);
+    const { todo, onClick } = this.props;
+    console.log(this.props);
     return (
       <li
-        onClick={() => this.toggleTodo(todo)}
+        onClick={onClick}
         className={this.state.completed ? "completed" : ""}
         key={todo.id}
       >

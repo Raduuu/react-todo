@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
 import "../styles/Todo.css";
+import { toggleTodo } from "../actions";
 import PropTypes from "prop-types";
 import { addTodo } from "../actions";
 import { connect } from "react-redux";
@@ -17,10 +18,7 @@ class TodosList extends Component {
   handleEnter = ev => {
     if (ev.key === "Enter" && ev.target.value !== "") {
       this.setState({ newTodo: "" });
-      // this.setState(state => ({
-      //   todos: state.todos.concat([this.state.newTodo])
-      // }));
-      this.props.dispatch(addTodo(ev.target.value));
+      this.props.addTodo(ev.target.value);
     } else {
       return;
     }
@@ -49,9 +47,14 @@ class TodosList extends Component {
         />
         <div className="todos-list">
           <ul>
-            {todos.map((todo, index) => {
-              return <Todo todo={todo} key={todo.id} />;
-            })}
+            {todos.map(todo => (
+              <Todo
+                onClick={() => toggleTodo(todo.id)} // want this function to pass to child through props
+                // so that when clicking the todo, it's toggled between complete and incomplete
+                todo={todo}
+                key={todo.id}
+              />
+            ))}
           </ul>
         </div>
       </div>
@@ -73,4 +76,12 @@ const mapStateToProps = state => ({
   todos: state.todos
 });
 
-export default connect(mapStateToProps)(TodosList);
+const mapDispatchToProps = dispatch => ({
+  toggleTodo: id => dispatch(toggleTodo(id)),
+  addTodo: text => dispatch(addTodo(text))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodosList);
