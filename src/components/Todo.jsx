@@ -10,15 +10,17 @@ class Todo extends Component {
   }
 
   render() {
-    const { todo, onClick, completedTodo } = this.props;
-    console.log(completedTodo);
+    const { todo, onClick } = this.props;
     return (
       <li
         onClick={onClick}
         className={todo.completed ? "completed" : ""}
         key={todo.id}
       >
-        {todo.text}
+        <div>
+          <input type="checkbox" name="checkbox" />
+          <label htmlFor="checkbox">{todo.text}</label>
+        </div>
       </li>
     );
   }
