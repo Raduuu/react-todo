@@ -31,8 +31,7 @@ class TodosList extends Component {
   };
 
   render() {
-    const { todos } = this.props;
-    console.log(todos);
+    const { todos, toggleTodo } = this.props;
 
     return (
       <div className="todos-wrapper">
@@ -47,20 +46,24 @@ class TodosList extends Component {
         />
         <div className="todos-list">
           <ul>
-            {todos.map(todo => (
-              <Todo
-                onClick={() => toggleTodo(todo.id)} // want this function to pass to child through props
-                // so that when clicking the todo, it's toggled between complete and incomplete
-                todo={todo}
-                key={todo.id}
-              />
-            ))}
+            {todos &&
+              todos.map(todo => (
+                <Todo
+                  onClick={() => toggleTodo(todo.id)}
+                  todo={todo}
+                  key={todo.id}
+                />
+              ))}
           </ul>
         </div>
       </div>
     );
   }
 }
+
+TodosList.defaultProps = {
+  todos: []
+};
 
 TodosList.propTypes = {
   todos: PropTypes.arrayOf(

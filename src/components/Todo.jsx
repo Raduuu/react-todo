@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-export default class Todo extends Component {
+import { toggleTodo } from "../actions";
+import { connect } from "react-redux";
+class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -8,12 +10,12 @@ export default class Todo extends Component {
   }
 
   render() {
-    const { todo, onClick } = this.props;
-    console.log(this.props);
+    const { todo, onClick, completedTodo } = this.props;
+    console.log(completedTodo);
     return (
       <li
         onClick={onClick}
-        className={this.state.completed ? "completed" : ""}
+        className={todo.completed ? "completed" : ""}
         key={todo.id}
       >
         {todo.text}
@@ -21,3 +23,9 @@ export default class Todo extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  toggleTodo: id => dispatch(toggleTodo(id))
+});
+
+export default connect(mapDispatchToProps)(Todo);
