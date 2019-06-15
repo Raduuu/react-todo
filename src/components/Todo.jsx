@@ -18,7 +18,7 @@ class Todo extends Component {
         key={todo.id}
       >
         <div>
-          <input type="checkbox" name="checkbox" />
+          <input type="checkbox" name="checkbox" checked={todo.completed}/>
           <label htmlFor="checkbox">{todo.text}</label>
         </div>
       </li>
