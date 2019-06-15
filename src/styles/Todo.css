@@ -37,8 +37,6 @@
   border-bottom: 1px solid #ededed;
   white-space: pre-line;
   word-break: break-all;
-  padding: 15px 60px 15px 15px;
-  margin-left: 45px;
   display: block;
   line-height: 1.2;
   transition: color 0.4s;
@@ -46,10 +44,48 @@
   font-weight: 300;
   text-align: left;
   cursor: pointer;
+  outline: none;
 }
 .todos-list li:hover {
   color: grey;
 }
+.todos-list li label {
+  word-break: break-all;
+  padding: 15px 15px 15px 60px;
+  display: block;
+  line-height: 1.2;
+  transition: color 0.4s;
+  outline: none;
+}
+
+.todos-list li .toggle {
+  background-color: initial;
+  box-sizing: border-box;
+  text-align: center;
+  width: 40px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border: none;
+  appearance: none;
+  outline: none;
+}
+
+.todos-list li .toggle + label {
+  background-image: url('../circle-regular.svg');
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: 25px 25px;
+  background-position: 15px 15px;
+  outline: none;
+}
+
 .todos-list li.completed {
+  text-decoration: line-through;
+}
+.todos-list li.completed .toggle + label {
+  background-image: url('../check-circle-regular.svg');
   text-decoration: line-through;
 }

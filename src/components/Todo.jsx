@@ -18,7 +18,7 @@ class Todo extends Component {
         key={todo.id}
       >
         <div>
-          <input type="checkbox" name="checkbox" checked={todo.completed}/>
+          <input type="checkbox" className="toggle" name="checkbox" onChange={() => toggleTodo(todo.id)} checked={todo.completed}/>
           <label htmlFor="checkbox">{todo.text}</label>
         </div>
       </li>
