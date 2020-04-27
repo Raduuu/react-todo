@@ -1,21 +1,27 @@
 {
-  "name": "react-todo",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "braces": ">=2.3.1",
-    "js-yaml": ">=3.13.1",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-redux": "^5.0.7",
-    "react-scripts": "1.1.5",
-    "redux": "^4.0.0",
-    "webpack-dev-server": ">=3.1.11"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "name": "react-todo",
+    "version": "0.1.0",
+    "homepage": "http://raduuu.github.io/react-todo",
+    "private": true,
+    "dependencies": {
+        "braces": ">=2.3.1",
+        "js-yaml": ">=3.13.1",
+        "react": "^16.4.2",
+        "react-dom": "^16.4.2",
+        "react-redux": "^5.0.7",
+        "react-scripts": "1.1.5",
+        "redux": "^4.0.0",
+        "webpack-dev-server": ">=3.1.11"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    },
+    "devDependencies": {
+        "gh-pages": "^2.2.0"
+    }
 }
