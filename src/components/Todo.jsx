@@ -1,33 +1,35 @@
-import React, { Component } from "react";
-import { toggleTodo } from "../actions";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { toggleTodo } from '../actions'
+import { connect } from 'react-redux'
 class Todo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      completed: false
-    };
-  }
+    constructor(props) {
+        super(props)
+        this.state = {
+            completed: false,
+        }
+    }
 
-  render() {
-    const { todo, onClick } = this.props;
-    return (
-      <li
-        onClick={onClick}
-        className={todo.completed ? "completed" : ""}
-        key={todo.id}
-      >
-        <div>
-          <input type="checkbox" className="toggle" name="checkbox" onChange={() => toggleTodo(todo.id)} checked={todo.completed}/>
-          <label htmlFor="checkbox">{todo.text}</label>
-        </div>
-      </li>
-    );
-  }
+    render() {
+        const { todo, onClick } = this.props
+        return (
+            <li onClick={onClick} className={todo.completed ? 'completed' : ''} key={todo.id}>
+                <div>
+                    <input
+                        type="checkbox"
+                        className="toggle"
+                        name="checkbox"
+                        onChange={() => toggleTodo(todo.id)}
+                        checked={todo.completed}
+                    />
+                    <label htmlFor="checkbox">{todo.text}</label>
+                </div>
+            </li>
+        )
+    }
 }
 
-const mapDispatchToProps = dispatch => ({
-  toggleTodo: id => dispatch(toggleTodo(id))
-});
+const mapDispatchToProps = (dispatch) => ({
+    toggleTodo: (id) => dispatch(toggleTodo(id)),
+})
 
-export default connect(mapDispatchToProps)(Todo);
+export default connect(mapDispatchToProps)(Todo)
